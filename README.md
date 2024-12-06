@@ -34,93 +34,102 @@ Publish the website in the given URL.
 ## PROGRAM :
 ```
 math.html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lamp Power Calculator</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 20px;
+            background: linear-gradient(120deg, #3b82f6, #06b6d4);
+            font-family: 'Arial', sans-serif;
+            color: #ffffff;
+        }
 
-<html>
-    <head>
-        <style>
-            body {
-                background: linear-gradient(135deg, #c6e116, #aeb0b2);
-                background-repeat: no-repeat;
-                background-size: cover;
-                background-position: center;
-                display: flex;
-                flex-direction: column;
-                justify-content: center;
-                align-items: center;
-                height: 100vh;
-                
-            }
+        h1 {
+            text-align: center;
+            font-size: 36px;
+            margin-bottom: 20px;
+            color: #fff;
+        }
 
-            h1 {
-                color: white;
-                font-style:italic;
-                text-align: center;
-                font-size: 50;
-                
+        form {
+            display: grid;
+            grid-template-columns: 1fr 2fr;
+            gap: 15px;
+            max-width: 700px;
+            margin: 0 auto;
+        }
 
-            }
+        label {
+            font-size: 16px;
+            font-weight: bold;
+            align-self: center;
+        }
 
-            .inputs {
-                display: flex;
-                flex-direction: column;
-                justify-content: center;
-                align-items: center;
-                background-color: rgba(211, 211, 211, 0.278);
-                width: 400px;
-                height: 300px;
-                padding: 20px;
-                
-            }
+        input {
+            padding: 10px;
+            border: none;
+            border-radius: 5px;
+            font-size: 14px;
+            outline: none;
+        }
 
-            form {
-                display: flex;
-                flex-direction: column;
-                width: 100%;
-                gap: 10px;
-        
-            }
+        input:focus {
+            box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
+        }
 
-            label {
-                font-size: 20px;
-                color: rgb(255, 0, 30);
-            }
+        button {
+            grid-column: span 2;
+            padding: 12px;
+            background-color: #2563eb;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
 
-            input {
-                padding: 8px;
-                border: 1px solid #ccc;
-                border-radius: 5px;
-                font-size: 14px;
-                width: 100%;
-            }
+        button:hover {
+            background-color: #1e40af;
+        }
 
-            button {
-                padding: 10px;
-                background-color: rgb(64, 255, 0);
-                color: white;
-                border: none;
-                border-radius: 5px;
-                font-size: 14px;
-            }
+        .result {
+            grid-column: span 2;
+            margin-top: 20px;
+            font-size: 18px;
+        }
 
+        .result input {
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid #fff;
+            color: #fff;
+            text-align: center;
+        }    
+    </style>
+</head>
+<body>
+    <h1 align="center">Lamp Power Calculator</h1>
+    <form method="POST">
+        {% csrf_token %}
+        <label for="intensity">Intensity (W/m²):</label>
+        <input type="text" id="intensity" name="intensity" placeholder="Enter intensity" value="{{ I }}">
 
+        <label for="resistance">Resistance (Ω):</label>
+        <input type="text" id="resistance" name="resistance" placeholder="Enter resistance" value="{{ R }}">
 
-        </style>
-    </head>
-    <body>
-        <h1>Power of a Lamp </h1><br>
-        <div class="inputs">
-            <form method="POST">
-                {% csrf_token %}
-                <label for="input1">Enter the intensity of the bulb(in W/m^2):</label>
-                <input type="text" id="input1" name="intensity" placeholder="Enter Intensity" value="{{I}}">
-                <label for="input2">Enter the resistance of the bulb(in ohm)</label>
-                <input type="text" id="input2" name="resistance" placeholder="Enter Resistance" value="{{R}}">
-                <button type="submit">Submit</button>
-            </form>
-            <label for="ans">Answer(in watts): </label>
-            <input type="text" id="ans" value="{{power}}" readonly>
+        <button type="submit">Calculate</button>
+
+        <div class="result">
+            <label for="power">Calculated Power (W):</label>
+            <input type="text" id="power" value="{{ power }}" readonly>
         </div>
-    </body>
+    </form>
+</body>
 </html>
 
 
@@ -160,11 +169,11 @@ urlpatterns = [
 
 
 ## SERVER SIDE PROCESSING:
-![alt text](<Screenshot (45).png>)
+![alt text](<Screenshot (51).png>)
 
 
 ## HOMEPAGE:
-![alt text](<Screenshot (44).png>)
+!c[alt text](<Screenshot (50).png>)
 
 ## RESULT:
 The program for performing server side processing is completed successfully.
