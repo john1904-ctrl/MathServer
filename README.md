@@ -163,7 +163,7 @@ from mathapp import views
 urlpatterns = [ 
     path('admin/', admin.site.urls), 
     path('areaofrectangle/',views.power,name="areaofrectangle"),
-    path('',views.power,name="areaofrectangleroot")
+    path('',views.power,name="calculatepower")
 ]
 ```
 
