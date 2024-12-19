@@ -162,7 +162,7 @@ from django.urls import path
 from mathapp import views 
 urlpatterns = [ 
     path('admin/', admin.site.urls), 
-    path('areaofrectangle/',views.power,name="areaofrectangle"),
+    path('areaofrectangle/',views.power,name="calculatepower"),
     path('',views.power,name="calculatepower")
 ]
 ```
